@@ -1,0 +1,17 @@
+{
+  "name": "pixel-meadow-ui",
+  "description": "Pixel Meadow UI: a Claude Code design skill for cozy, premium landing pages with procedural pixel-art heroes.",
+  "owner": {
+    "name": "lijnati",
+    "url": "https://github.com/lijnati"
+  },
+  "plugins": [
+    {
+      "name": "pixel-meadow-ui",
+      "source": "./",
+      "description": "Design skill for cozy, premium landing pages with procedural pixel-art nature heroes, glass pill nav, DM Sans + serif italic type, pastel cards and soft motion.",
+      "version": "1.0.0",
+      "category": "design"
+    }
+  ]
+}

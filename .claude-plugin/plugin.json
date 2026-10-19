@@ -1,0 +1,13 @@
+{
+  "name": "pixel-meadow-ui",
+  "version": "1.0.0",
+  "description": "Design skill for cozy, premium landing pages: procedural 16-bit pixel-art nature heroes in rounded frames, glass pill nav, DM Sans with a serif italic accent, pastel cards and soft blur-in motion.",
+  "author": {
+    "name": "lijnati",
+    "url": "https://github.com/lijnati"
+  },
+  "homepage": "https://github.com/lijnati/pixel-meadow-ui",
+  "repository": "https://github.com/lijnati/pixel-meadow-ui",
+  "license": "MIT",
+  "keywords": ["design", "landing-page", "pixel-art", "ui", "frontend", "skill"]
+}
