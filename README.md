@@ -44,7 +44,62 @@ From the prompt *"Build me a landing page for telebirr-mcp, an open-source MCP s
 
 ## Install
 
-**Claude Code (plugin, recommended)**
+pixel-meadow-ui is a standard [Agent Skills](https://agentskills.io) folder (`SKILL.md` + references + assets), so it works in any agent that reads skills: Claude Code, Cursor, Gemini CLI, Google Antigravity, OpenAI Codex, GitHub Copilot, OpenCode, Windsurf, Kiro and more.
+
+### Any agent: one command
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lijnati/pixel-meadow-ui/main/install.sh | bash
+```
+
+With no arguments it detects the agents installed on your machine and installs the skill for each one. To pick agents yourself, name them:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lijnati/pixel-meadow-ui/main/install.sh | bash -s -- cursor gemini antigravity
+```
+
+From a clone you can also run `./install.sh` directly:
+
+| Command | What it does |
+|---|---|
+| `./install.sh` | install for every detected agent (user scope) |
+| `./install.sh cursor codex` | install for the agents you name |
+| `./install.sh --all` | install for every supported agent |
+| `./install.sh --project cursor` | install into the current project (commit it to share with your team) |
+| `./install.sh --uninstall cursor` | remove it |
+| `./install.sh --list` | show every supported agent and its paths |
+
+Or use the cross-agent [skills CLI](https://skills.sh):
+
+```bash
+npx skills add lijnati/pixel-meadow-ui
+```
+
+### Where it goes
+
+If you'd rather copy the folder yourself, put `skills/pixel-meadow-ui/` here:
+
+| Agent | Global (all projects) | Project |
+|---|---|---|
+| Claude Code | `~/.claude/skills/` | `.claude/skills/` |
+| Cursor | `~/.cursor/skills/` | `.cursor/skills/` |
+| Gemini CLI | `~/.gemini/skills/` | `.gemini/skills/` |
+| Google Antigravity | `~/.gemini/antigravity/skills/` | `.agent/skills/` |
+| OpenAI Codex | `~/.agents/skills/` | `.agents/skills/` |
+| GitHub Copilot | `~/.copilot/skills/` | `.github/skills/` |
+| OpenCode | `~/.config/opencode/skills/` | `.opencode/skills/` |
+| Windsurf | `~/.codeium/windsurf/skills/` | `.windsurf/skills/` |
+| Kiro | `~/.kiro/skills/` | `.kiro/skills/` |
+| Other Agent Skills tools | `~/.agents/skills/` | `.agents/skills/` |
+
+```bash
+git clone https://github.com/lijnati/pixel-meadow-ui.git /tmp/pixel-meadow-ui
+cp -r /tmp/pixel-meadow-ui/skills/pixel-meadow-ui ~/.cursor/skills/
+```
+
+On Windows, copy the same folder into the matching directory under `%USERPROFILE%`.
+
+### Claude Code (plugin)
 
 ```
 /plugin marketplace add lijnati/pixel-meadow-ui
@@ -57,14 +112,21 @@ It is also listed in the [lijnati-skills](https://github.com/lijnati/saas-brand-
 /plugin install pixel-meadow-ui@lijnati-skills
 ```
 
-**Claude Code (manual)**
+### Gemini CLI (extension or skill)
+
+The repo is also a Gemini CLI extension:
 
 ```bash
-git clone https://github.com/lijnati/pixel-meadow-ui.git /tmp/pixel-meadow-ui
-cp -r /tmp/pixel-meadow-ui/skills/pixel-meadow-ui ~/.claude/skills/
+gemini extensions install https://github.com/lijnati/pixel-meadow-ui
 ```
 
-**Claude apps**
+Or install just the skill:
+
+```bash
+gemini skills install https://github.com/lijnati/pixel-meadow-ui --path skills/pixel-meadow-ui
+```
+
+### Claude apps
 
 Build the package with `./build.sh`, then upload `dist/pixel-meadow-ui.skill` in Claude's skills settings.
 
@@ -85,6 +147,8 @@ It works with plain HTML, React/Next.js and Tailwind.
 .claude-plugin/
   plugin.json               plugin manifest
   marketplace.json          lets this repo act as its own marketplace
+gemini-extension.json       Gemini CLI extension manifest
+install.sh                  installer for Cursor, Gemini, Antigravity, Codex, Copilot and more
 skills/pixel-meadow-ui/
   SKILL.md                  workflow, non-negotiables, voice
   references/tokens.md      type, color, shape, motion specs
